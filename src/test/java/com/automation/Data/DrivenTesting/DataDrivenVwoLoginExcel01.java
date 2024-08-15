@@ -1,6 +1,7 @@
 package com.automation.Data.DrivenTesting;
 
 import com.automation.utils.ExcelReader;
+import com.automation.utils.ExcelReader01;
 import org.openqa.selenium.By;
 import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
@@ -19,7 +20,7 @@ import java.io.IOException;
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
-public class DataDrivenVwoLoginExcel {
+public class DataDrivenVwoLoginExcel01 {
     private WebDriver driver;
     private static final String BASE_URL = "https://app.vwo.com";
     private static final String EXPECTED_USERNAME = "karamjeet kaur";
@@ -65,12 +66,11 @@ public class DataDrivenVwoLoginExcel {
 
     }
 
-@DataProvider(name ="loginData")
-    public String [][]testDataexcel() throws IOException {
-    String testDataFile =EXCEL_FILE_PATH;
-    ExcelReader excelReader =new ExcelReader();
-    String [][] Data =excelReader.readExcel(testDataFile,"Sheet1");
-    return  Data;
+    @DataProvider(name = "loginData")
+    public Object[][] testDataExcel() throws IOException {
+        String testDataFile = EXCEL_FILE_PATH;
+        ExcelReader01 excelReader = new ExcelReader01();
+        return excelReader.readExcel(testDataFile, "Sheet1");
     }
 
     @AfterClass
